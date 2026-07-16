@@ -1,0 +1,25 @@
+###
+POST https://live.ecomm-data.com/api/assignment/list
+Content-Type: application/json
+
+{
+  "type": "lb"
+}
+
+###
+POST https://live.ecomm-data.com/api/assignment/list
+Content-Type: application/json
+
+{
+  "type": "hs"
+}
+
+
+###
+POST https://live.ecomm-data.com/api/user/sign_in
+Content-Type: application/json
+
+{
+  "email": "",
+  "password": ""
+}

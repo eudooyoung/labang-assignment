@@ -1,8 +1,8 @@
-import type { ListResponse, ListType } from "@/types/types.ts";
+import type { List, ListType } from "@/types/types.ts";
 import { useCallback, useEffect, useState } from "react";
 
 export const useList = () => {
-  const [list, setList] = useState<ListResponse | null>(null);
+  const [list, setList] = useState<List | null>(null);
   const [listLoading, setListLoading] = useState(true);
   const [listError, setListError] = useState<Error | null>(null);
 
@@ -61,11 +61,16 @@ export const useList = () => {
         });
         setList(list);
       } catch (error) {
+        if (abortController.signal.aborted) {
+          return;
+        }
         if (error instanceof Error) {
           setListError(error);
         }
       } finally {
-        setListLoading(false);
+        if (!abortController.signal.aborted) {
+          setListLoading(false);
+        }
       }
     })();
 

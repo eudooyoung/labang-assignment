@@ -7,11 +7,7 @@ export type User = {
   prefer: number;
 };
 
-export type ListResponse = {
-  list: LiveBroadCast[];
-  user: null | User;
-  mask?: boolean;
-};
+export type List = LiveBroadCast[] | HomeShopping[];
 
 export type LiveBroadCast = {
   objectID: string;
@@ -19,10 +15,11 @@ export type LiveBroadCast = {
   datetime_start: string;
   product_cnt: number;
   visit_cnt: number | null;
-  saled_cnt: number | null;
+  sales_cnt: number | null;
   sales_amt: number | null;
   title: string;
   cid: number;
+  ad_channel?: string[];
 };
 
 export type HomeShopping = {

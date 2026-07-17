@@ -4,7 +4,7 @@ import { useList } from "./hooks/useList.ts";
 import { useLogin } from "./hooks/useLogin.ts";
 import { useLogout } from "./hooks/useLogout.ts";
 import { usePing } from "./hooks/usePing.ts";
-import type { ListType } from "./types/types.ts";
+import type { HomeShopping, ListType, LiveBroadCast } from "./types/types.ts";
 import { HSTable } from "./components/table/HSTable.tsx";
 
 function App() {
@@ -61,8 +61,12 @@ function App() {
         <button onClick={toggleList("lb")}>라방</button>
         <button onClick={toggleList("hs")}>홈쇼핑</button>
       </div>
-      {listType === "lb" && <LBTable list={list} />}
-      {listType === "hs" && <HSTable list={list} />}
+      {!listLoading && !listError && (
+        <>
+          {listType === "lb" && <LBTable list={list as LiveBroadCast[]} />}
+          {listType === "hs" && <HSTable list={list as HomeShopping[]} />}
+        </>
+      )}
     </main>
   );
 }

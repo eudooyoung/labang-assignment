@@ -1,5 +1,5 @@
 import { useLogin } from "@/hooks/useLogin.ts";
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 describe("useLogin hook", () => {
@@ -7,7 +7,9 @@ describe("useLogin hook", () => {
     const spyFetch = vi
       .spyOn(globalThis, "fetch")
       .mockResolvedValue({} as Response);
-    renderHook(() => useLogin());
+    const { result } = renderHook(() => useLogin());
+
+    await act(() => result.current.login());
 
     await waitFor(() => {
       expect(spyFetch).toHaveBeenCalled();
@@ -27,8 +29,9 @@ describe("useLogin hook", () => {
     } as Response);
     const { result } = renderHook(() => useLogin());
 
-    expect(result.current.loginLoading).toBe(true);
+    expect(result.current.loginLoading).toBe(false);
     expect(result.current.loginError).toBe(null);
+    await act(() => result.current.login());
 
     await waitFor(() => {
       expect(result.current.loginLoading).toBe(false);
@@ -43,6 +46,7 @@ describe("useLogin hook", () => {
       json: () => Promise.resolve({}),
     } as Response);
     const { result } = renderHook(() => useLogin());
+    await act(() => result.current.login());
 
     await waitFor(() => {
       expect(result.current.loginLoading).toBe(false);

@@ -1,22 +1,20 @@
-import { env } from "@/config/env.ts";
 import { useState } from "react";
 
-export const useLogin = () => {
-  const [loginLoading, setLoginLoading] = useState(false);
-  const [loginError, setLoginError] = useState<Error | null>(null);
+export const useLogout = () => {
+  const [logoutLoading, setLogoutLoading] = useState(false);
+  const [logoutError, setLogoutError] = useState<Error | null>(null);
 
-  const login = async () => {
-    setLoginLoading(true);
-    setLoginError(null);
+  const logout = async () => {
+    setLogoutLoading(true);
+    setLogoutError(null);
 
     try {
-      const response = await fetch("/api/user/sign_in", {
+      const response = await fetch("/api/user/sign_out", {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: env.username, password: env.password }),
       });
 
       if (!response.ok) {
@@ -29,17 +27,17 @@ export const useLogin = () => {
       return true;
     } catch (error) {
       if (error instanceof Error) {
-        setLoginError(error);
+        setLogoutError(error);
       }
       return false;
     } finally {
-      setLoginLoading(false);
+      setLogoutLoading(false);
     }
   };
 
   return {
-    login,
-    loginLoading,
-    loginError,
+    logout,
+    logoutLoading,
+    logoutError,
   };
 };

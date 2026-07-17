@@ -1,4 +1,6 @@
-export const Table = () => {
+import type { ListResponse } from "@/types/types.ts";
+
+export const HSTable = ({ list }: { list: ListResponse }) => {
   return (
     <table>
       <thead>

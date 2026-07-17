@@ -1,15 +1,18 @@
-import { type MouseEventHandler } from "react";
-import { Table } from "./components/table/Table.tsx";
+import { useState, type MouseEventHandler } from "react";
+import { LBTable } from "./components/table/LBTable.tsx";
 import { useList } from "./hooks/useList.ts";
 import { useLogin } from "./hooks/useLogin.ts";
 import { useLogout } from "./hooks/useLogout.ts";
 import { usePing } from "./hooks/usePing.ts";
+import type { ListType } from "./types/types.ts";
+import { HSTable } from "./components/table/HSTable.tsx";
 
 function App() {
   const { user, userLoading, userError, getUser } = usePing();
   const { login, loginLoading, loginError } = useLogin();
   const { logout, logoutLoading, logoutError } = useLogout();
   const { list, listLoading, listError, getList } = useList();
+  const [listType, setListType] = useState<ListType>("lb");
 
   if (userLoading) {
     return <>Loading...</>;
@@ -33,6 +36,11 @@ function App() {
     }
   };
 
+  const toggleList = (type: ListType) => async () => {
+    setListType(type);
+    await getList(type);
+  };
+
   return (
     <main>
       {userError && <p>{userError.message}</p>}
@@ -50,10 +58,11 @@ function App() {
       {logoutError && <p>{logoutError.message}</p>}
 
       <div>
-        <button>라방</button>
-        <button>홈쇼핑</button>
+        <button onClick={toggleList("lb")}>라방</button>
+        <button onClick={toggleList("hs")}>홈쇼핑</button>
       </div>
-      <Table />
+      {listType === "lb" && <LBTable list={list} />}
+      {listType === "hs" && <HSTable list={list} />}
     </main>
   );
 }

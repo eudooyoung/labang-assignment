@@ -21,8 +21,8 @@ export const useLogout = () => {
         if (response.status === 401) {
           throw new Error("Unauthorized error. Check username or password.");
         }
-        const { error } = await response.json();
-        throw new Error(error.msg);
+        const data = await response.json();
+        throw new Error(data.error?.msg);
       }
       return true;
     } catch (error) {

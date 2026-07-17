@@ -37,13 +37,22 @@ export type HomeShopping = {
   cid: number;
   sales_cnt: number | null;
   salles_amt: number | null;
-  cat: Category;
+  cat: HSCategory;
   visit_cnt: number | null;
 };
 
-export type Category = {
+export type HSCategory = {
   cid: number;
   cat_name: string;
 };
 
 export type ListType = "lb" | "hs";
+
+export type Category = {
+  pid: null | number;
+  name: string;
+};
+
+export type Categories = {
+  [key: string]: Category;
+};

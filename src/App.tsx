@@ -1,8 +1,10 @@
 import { Table } from "./components/table/Table.tsx";
+import { useList } from "./hooks/useList.ts";
 import { useLogin } from "./hooks/useLogin.ts";
 
 function App() {
   const { loginLoading, loginError } = useLogin();
+  const { list, listLoading, listError, getList } = useList();
 
   if (loginLoading) {
     <>Loading...</>;

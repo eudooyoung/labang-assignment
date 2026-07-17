@@ -14,7 +14,7 @@ export const useList = () => {
     type: ListType;
     signal?: AbortSignal;
   }) => {
-    const response = await fetch(`${env.apiBaseUrl}/assignment/list`, {
+    const response = await fetch("/api/assignment/list", {
       method: "POST",
       credentials: "include",
       signal,

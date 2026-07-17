@@ -27,13 +27,13 @@ export type HomeShopping = {
   platform_id: string;
   platform_name: string;
   hsshow_title: string;
-  hssshow_datetime_start: string;
-  hssshow_datetime_end: string;
-  hssshow_url_libe: string;
+  hsshow_datetime_start: string;
+  hsshow_datetime_end: string;
+  hsshow_url_libe: string;
   item_cnt: number;
   cid: number;
   sales_cnt: number | null;
-  salles_amt: number | null;
+  sales_amt: number | null;
   cat: HSCategory;
   visit_cnt: number | null;
 };

@@ -19,7 +19,7 @@ export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map((lb, idx) => (
+        {list.slice(0, 10).map((lb, idx) => (
           <tr key={lb.objectID}>
             <th scope="row">{idx + 1}</th>
             <td>{lb.title}</td>

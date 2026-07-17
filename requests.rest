@@ -26,3 +26,6 @@ Content-Type: application/json
 
 ###
 POST https://live.ecomm-data.com/api/user/sign_out
+
+###
+POST  https://live.ecomm-data.com/api/ping

@@ -1,4 +1,3 @@
-import { env } from "@/config/env.ts";
 import { useState } from "react";
 
 export const useLogout = () => {

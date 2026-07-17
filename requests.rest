@@ -1,4 +1,4 @@
-###
+### labang list
 POST https://live.ecomm-data.com/api/assignment/list
 Content-Type: application/json
 
@@ -6,7 +6,7 @@ Content-Type: application/json
   "type": "lb"
 }
 
-###
+### homeshopping list
 POST https://live.ecomm-data.com/api/assignment/list
 Content-Type: application/json
 
@@ -23,3 +23,9 @@ Content-Type: application/json
   "email": "",
   "password": ""
 }
+
+###
+POST https://live.ecomm-data.com/api/user/sign_out
+
+###
+POST  https://live.ecomm-data.com/api/ping

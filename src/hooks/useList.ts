@@ -1,4 +1,3 @@
-import { env } from "@/config/env.ts";
 import type { ListResponse, ListType } from "@/types/types.ts";
 import { useCallback, useEffect, useState } from "react";
 
@@ -14,7 +13,7 @@ export const useList = () => {
     type: ListType;
     signal?: AbortSignal;
   }) => {
-    const response = await fetch(`${env.apiBaseUrl}/assignment/list`, {
+    const response = await fetch("/api/assignment/list", {
       method: "POST",
       credentials: "include",
       signal,
@@ -54,7 +53,7 @@ export const useList = () => {
   useEffect(() => {
     const abortController = new AbortController();
 
-    (async () => {
+    void (async () => {
       try {
         const { list } = await fetchList({
           type: "lb",
@@ -69,6 +68,10 @@ export const useList = () => {
         setListLoading(false);
       }
     })();
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return { list, listLoading, listError, getList };

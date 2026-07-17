@@ -18,9 +18,9 @@ export type LiveBroadCast = {
   platform_id: string;
   datetime_start: string;
   product_cnt: number;
-  visit_cnt: number;
-  saled_cnt: number;
-  sales_amt: number;
+  visit_cnt: number | null;
+  saled_cnt: number | null;
+  sales_amt: number | null;
   title: string;
   cid: number;
 };
@@ -35,9 +35,10 @@ export type HomeShopping = {
   hssshow_url_libe: string;
   item_cnt: number;
   cid: number;
-  sales_cnt: number;
-  salles_amt: number;
+  sales_cnt: number | null;
+  salles_amt: number | null;
   cat: Category;
+  visit_cnt: number | null;
 };
 
 export type Category = {

@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 
-###
+### login
 POST https://live.ecomm-data.com/api/user/sign_in
 Content-Type: application/json
 
@@ -24,7 +24,7 @@ Content-Type: application/json
   "password": ""
 }
 
-###
+### logout
 POST https://live.ecomm-data.com/api/user/sign_out
 
 ###

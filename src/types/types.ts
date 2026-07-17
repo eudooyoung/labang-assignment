@@ -7,11 +7,7 @@ export type User = {
   prefer: number;
 };
 
-export type ListResponse = {
-  list: LiveBroadCast[];
-  user: null | User;
-  mask?: boolean;
-};
+export type List = LiveBroadCast[] | HomeShopping[];
 
 export type LiveBroadCast = {
   objectID: string;
@@ -19,10 +15,11 @@ export type LiveBroadCast = {
   datetime_start: string;
   product_cnt: number;
   visit_cnt: number | null;
-  saled_cnt: number | null;
+  sales_cnt: number | null;
   sales_amt: number | null;
   title: string;
   cid: number;
+  ad_channel?: string[];
 };
 
 export type HomeShopping = {
@@ -30,13 +27,13 @@ export type HomeShopping = {
   platform_id: string;
   platform_name: string;
   hsshow_title: string;
-  hssshow_datetime_start: string;
-  hssshow_datetime_end: string;
-  hssshow_url_libe: string;
+  hsshow_datetime_start: string;
+  hsshow_datetime_end: string;
+  hsshow_url_libe: string;
   item_cnt: number;
   cid: number;
   sales_cnt: number | null;
-  salles_amt: number | null;
+  sales_amt: number | null;
   cat: HSCategory;
   visit_cnt: number | null;
 };

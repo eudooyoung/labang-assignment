@@ -27,20 +27,20 @@
   width: 5rem;
 }
 
+.colHeader,
+.rowHeader,
+.cell {
+  padding: 0.7rem;
+}
+
 .colHeader {
-  background: hsl(222 25% 90%);
-  padding: 1rem;
-  font-size: 0.8rem;
+  background: hsl(222 25% 92%);
+  font-size: 0.85rem;
   color: hsl(222 5% 50%);
 }
 
 .tableRow:hover {
   background: hsl(222 17% 97%);
-}
-
-.rowHeader,
-.cell {
-  padding: 0.7rem;
 }
 
 .rowHeader {
@@ -49,6 +49,7 @@
 
 .cell {
   text-align: center;
+  color: hsl(222 5% 30%);
 }
 
 .cell.title {

@@ -19,7 +19,6 @@ export type LiveBroadCast = {
   sales_amt: number | null;
   title: string;
   cid: number;
-  ad_channel?: string[];
 };
 
 export type HomeShopping = {
@@ -35,7 +34,7 @@ export type HomeShopping = {
   sales_cnt: number | null;
   sales_amt: number | null;
   cat: HSCategory;
-  visit_cnt: number | null;
+  visit_cnt?: null;
 };
 
 export type HSCategory = {

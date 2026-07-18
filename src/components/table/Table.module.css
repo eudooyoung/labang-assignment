@@ -1,0 +1,73 @@
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.visitCol,
+.salesCntCol,
+.salesAmtCol {
+  width: 6rem;
+}
+
+.indexCol {
+  width: 3rem;
+}
+
+.titleCol {
+  min-width: 20rem;
+}
+
+.catCol {
+  width: 10rem;
+}
+
+.timeCol {
+  width: 7.5rem;
+}
+
+.prodCntCol {
+  width: 5rem;
+}
+
+.colHeader,
+.rowHeader,
+.cell {
+  padding: 0.3rem;
+}
+
+.colHeader {
+  background: hsl(222 25% 92%);
+  font-size: 0.85rem;
+  color: hsl(222 5% 50%);
+}
+
+.tableRow:hover {
+  background: hsl(222 17% 97%);
+}
+
+.rowHeader {
+  color: hsl(222 5% 45%);
+}
+
+.cell {
+  text-align: center;
+  color: hsl(222 5% 30%);
+}
+
+.cell.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  font-weight: bold;
+}
+
+.cell.date .time {
+  color: hsl(222 5% 60%);
+}
+
+.cell.prdCnt,
+.cell.itmCnt {
+  text-align: right;
+}

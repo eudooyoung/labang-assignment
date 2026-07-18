@@ -5,7 +5,11 @@ import { lbDateParser } from "@/lib/dateParsers.ts";
 import { amountParser } from "@/lib/amountParser.ts";
 
 export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
-  const { categories, categoriesLoading, categoriesError } = useCategories();
+  const { categories, categoriesError } = useCategories();
+
+  if (categoriesError) {
+    console.error(categoriesError);
+  }
 
   return (
     <table className={styles.table}>
@@ -52,10 +56,22 @@ export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
               {idx + 1}
             </th>
             <td className={`${styles.cell} ${styles.title}`} title={lb.title}>
-              {lb.title}
+              <a
+                href={`https://live.ecomm-data.com/report/labang/${lb.objectID}`}
+                target="_blank"
+                rel="noopener noreferrer">
+                {lb.title}
+              </a>
             </td>
             <td className={styles.cell}>
-              {categories && categories[lb.cid].name}
+              {categories && (
+                <a
+                  href={`https://live.ecomm-data.com/report/category/${lb.cid}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {categories[lb.cid].name}
+                </a>
+              )}
             </td>
             <td className={`${styles.cell} ${styles.date}`}>
               <p>{lbDateParser(lb.datetime_start).date}</p>

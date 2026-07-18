@@ -51,9 +51,21 @@ export const HSTable = ({ list }: { list: HomeShopping[] }) => {
             <td
               className={`${styles.cell} ${styles.title}`}
               title={hs.hsshow_title}>
-              {hs.hsshow_title}
+              <a
+                href={`https://live.ecomm-data.com/report/hsshow/${hs.hsshow_id}`}
+                target="_blank"
+                rel="noopener noreferrer">
+                {hs.hsshow_title}
+              </a>
             </td>
-            <td className={styles.cell}>{hs.cat.cat_name}</td>
+            <td className={styles.cell}>
+              <a
+                href={`https://live.ecomm-data.com/report/category/hs/${hs.cat.cid}`}
+                target="_blank"
+                rel="noopener noreferrer">
+                {hs.cat.cat_name}
+              </a>
+            </td>
             <td className={`${styles.cell} ${styles.date}`}>
               <p>{hsDateParser(hs.hsshow_datetime_start).date}</p>
               <p className={styles.time}>
@@ -61,7 +73,7 @@ export const HSTable = ({ list }: { list: HomeShopping[] }) => {
               </p>
             </td>
             <td className={styles.cell}>
-              {hs.visit_cnt === null ? "로그인" : ""}
+              {hs.visit_cnt === null ? "로그인" : "준비중"}
             </td>
             <td className={styles.cell}>
               {!hs.sales_cnt ? "로그인" : amountParser(hs.sales_cnt)}

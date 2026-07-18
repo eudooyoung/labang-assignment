@@ -19,7 +19,7 @@ VITE_PASSWORD=<라방바_비밀번호>
 - 프로젝트 복사: `git clone https://github.com/eudooyoung/labang-assignment.git`
 - 앱 설치: `cd labang-assignment && npm install`
 - 앱 구동: `npm run dev`
-- 앱 접속: 브라우저 주소창에 콘솔에 출력된 주소(기본: http://localhost:5173/)를 입력합니다.
+- 앱 접속: 브라우저 주소창에 콘솔에 출력된 주소(기본: `http://localhost:5173/`)를 입력합니다.
 
 ## 앱 설명
 

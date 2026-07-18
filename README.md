@@ -1,140 +1,29 @@
-# React Template
+# 씨브이쓰리 기술과제
 
-## About
+## 실행 환경
 
-How this template was created:
+- Git
+- Node.js 24+
 
-### Clean up
+## 환경 변수 설정
 
-- Remove default styles and code
+아래의 내용을 담은 .env 파일을 프로젝트 최상단에 생성하세요. (.env.example 참고)
 
-### Install packages
+```
+VITE_USERNAME=<라방바_아이디>
+VITE_PASSWORD=<라방바_비밀번호>
+```
 
-1. Command ` npm create vite@latest . -- --template react-ts` in the target directory to scaffold initial react app.
-2. Install additional runtime dependencies:
-   - react-router
-3. Install additional development dependencies:
-   - vitest
-   - jsdom
-   - @testing-library/jest-dom
-   - @testing-library/react
-   - @testing-library/user-event
+## 실행 순서
 
-### Modify configs
+- 프로젝트 복사: `git clone https://github.com/eudooyoung/labang-assignment.git`
+- 앱 설치: `cd labang-assignment && npm install`
+- 앱 구동: `npm run dev`
+- 앱 접속: 브라우저 주소창에 콘솔에 출력된 주소(기본: http://localhost:5173/)를 입력합니다.
 
-1. In eslint.config, update language options and rules:
+## 앱 설명
 
-   ```javascript
-   languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    rules: {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-    },
-   ```
-
-2. In package.json, add scripts `"test": "vitest",`
-
-3. In tsconfig.app.json,
-   - add `"@testing-library/jest-dom"` to types
-   - add `"paths": {"@/*": ["./src/*"]}` to compiler options:
-
-4. In vite.config,
-   - add `/// <reference types="vitest/config" />` in the first line
-   - add to definConfig option:
-     ```javascript
-      resolve: {
-        alias: {
-          "@": resolve(import.meta.dirname, "./src"),
-        },
-      },
-     test: {
-       globals: true,
-       environment: "jsdom",
-       setupFiles: "./src/tests/setup.ts",
-     }
-     ```
-
-### Create utils
-
-1. Create minimal router
-
-   ```javascript
-   // src/routes/router.tsx
-
-   import App from "@/App.tsx";
-   import { createBrowserRouter } from "react-router";
-
-   const routes = [
-     {
-       path: "/",
-       element: <App />,
-     },
-   ];
-
-   export const router = createBrowserRouter(routes);
-   ```
-
-2. Update main.tsx to render `<RouterProvider router={router} />` instead of `<App />`
-
-3. Create test setup script
-
-   ```javascript
-   // src/tests/setup.ts
-
-   import { expect, afterEach, vi } from "vitest";
-   import { cleanup } from "@testing-library/react";
-   import * as matchers from "@testing-library/jest-dom/matchers";
-   import "@testing-library/user-event";
-
-   expect.extend(matchers);
-
-   afterEach(() => {
-     cleanup();
-     vi.restoreAllMocks();
-   });
-   ```
-
-### Gitignore
-
-- Add .env and .vite to .gitignore
-
-## Installed packages
-
-- ### react
-  - react
-  - react-dom
-  - react-router
-
-- ### vite
-  - vite
-  - @vitejs/plugin-react
-
-- ### typescript
-  - typescript
-  - @types/node
-  - @types/react-dom
-  - @types/react
-
-- ### lint
-  - eslint
-  - typescript-eslint
-  - @eslint/js
-  - eslint-plugin-react-hooks
-  - eslint-plugin-react-refresh
-
-- ### test
-  - vitest
-  - @testing-library/jest-dom
-  - @testing-library/react
-  - @testing-library/user-event
-
-- ### etc
-  - jsdom
-  - globals
+- 로그인 & 로그아웃 버튼으로 인증 상태를 변경합니다.
+- 라방 & 홈쇼핑 토글 버튼으로 방송 유형을 전환합니다.
+- 방송 제목을 클릭하여 방송 분석 페이지로 이동합니다.
+- 분류명을 클릭하여 해당 분류 분석 페이지로 이동합니다.

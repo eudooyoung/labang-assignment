@@ -51,7 +51,9 @@ export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
             <th className={styles.rowHeader} scope="row">
               {idx + 1}
             </th>
-            <td className={`${styles.cell} ${styles.title}`}>{lb.title}</td>
+            <td className={`${styles.cell} ${styles.title}`} title={lb.title}>
+              {lb.title}
+            </td>
             <td className={styles.cell}>
               {categories && categories[lb.cid].name}
             </td>

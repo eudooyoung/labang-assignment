@@ -48,7 +48,9 @@ export const HSTable = ({ list }: { list: HomeShopping[] }) => {
             <th className={styles.rowHeader} scope="row">
               {idx + 1}
             </th>
-            <td className={`${styles.cell} ${styles.title}`}>
+            <td
+              className={`${styles.cell} ${styles.title}`}
+              title={hs.hsshow_title}>
               {hs.hsshow_title}
             </td>
             <td className={styles.cell}>{hs.cat.cat_name}</td>

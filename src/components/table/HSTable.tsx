@@ -1,5 +1,7 @@
 import type { HomeShopping } from "@/types/types.ts";
 import styles from "./Table.module.css";
+import { hsDateParser } from "@/lib/dateParsers.ts";
+import { amountParser } from "@/lib/amountParser.ts";
 
 export const HSTable = ({ list }: { list: HomeShopping[] }) => {
   return (
@@ -50,15 +52,20 @@ export const HSTable = ({ list }: { list: HomeShopping[] }) => {
               {hs.hsshow_title}
             </td>
             <td className={styles.cell}>{hs.cat.cat_name}</td>
-            <td className={styles.cell}>{hs.hsshow_datetime_start}</td>
+            <td className={`${styles.cell} ${styles.date}`}>
+              <p>{hsDateParser(hs.hsshow_datetime_start).date}</p>
+              <p className={styles.time}>
+                {hsDateParser(hs.hsshow_datetime_start).time}
+              </p>
+            </td>
             <td className={styles.cell}>
               {hs.visit_cnt === null ? "로그인" : ""}
             </td>
             <td className={styles.cell}>
-              {!hs.sales_cnt ? "로그인" : hs.sales_cnt}
+              {!hs.sales_cnt ? "로그인" : amountParser(hs.sales_cnt)}
             </td>
             <td className={styles.cell}>
-              {!hs.sales_amt ? "로그인" : hs.sales_amt}
+              {!hs.sales_amt ? "로그인" : amountParser(hs.sales_amt)}
             </td>
             <td className={`${styles.cell} ${styles.itmCnt}`}>{hs.item_cnt}</td>
           </tr>

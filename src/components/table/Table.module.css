@@ -4,7 +4,6 @@
   width: 100%;
 }
 
-.timeCol,
 .visitCol,
 .salesCntCol,
 .salesAmtCol {
@@ -23,6 +22,10 @@
   width: 10rem;
 }
 
+.timeCol {
+  width: 7.5rem;
+}
+
 .prodCntCol {
   width: 5rem;
 }
@@ -30,7 +33,7 @@
 .colHeader,
 .rowHeader,
 .cell {
-  padding: 0.7rem;
+  padding: 0.3rem;
 }
 
 .colHeader {
@@ -58,6 +61,10 @@
   white-space: nowrap;
   text-align: left;
   font-weight: bold;
+}
+
+.cell.date .time {
+  color: hsl(222 5% 60%);
 }
 
 .cell.prdCnt,

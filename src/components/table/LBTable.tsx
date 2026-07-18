@@ -1,6 +1,8 @@
 import { useCategories } from "@/hooks/useCategories.ts";
 import type { LiveBroadCast } from "@/types/types.ts";
 import styles from "./Table.module.css";
+import { lbDateParser } from "@/lib/dateParsers.ts";
+import { amountParser } from "@/lib/amountParser.ts";
 
 export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
   const { categories, categoriesLoading, categoriesError } = useCategories();
@@ -50,18 +52,23 @@ export const LBTable = ({ list }: { list: LiveBroadCast[] }) => {
               {idx + 1}
             </th>
             <td className={`${styles.cell} ${styles.title}`}>{lb.title}</td>
-            {!categoriesLoading && !categoriesError && (
-              <td className={styles.cell}>{categories![lb.cid].name}</td>
-            )}
-            <td className={styles.cell}>{lb.datetime_start}</td>
             <td className={styles.cell}>
-              {!lb.visit_cnt ? "로그인" : lb.visit_cnt}
+              {categories && categories[lb.cid].name}
+            </td>
+            <td className={`${styles.cell} ${styles.date}`}>
+              <p>{lbDateParser(lb.datetime_start).date}</p>
+              <p className={styles.time}>
+                {lbDateParser(lb.datetime_start).time}
+              </p>
             </td>
             <td className={styles.cell}>
-              {!lb.sales_cnt ? "로그인" : lb.sales_cnt}
+              {!lb.visit_cnt ? "로그인" : amountParser(lb.visit_cnt)}
             </td>
             <td className={styles.cell}>
-              {!lb.sales_amt ? "로그인" : lb.sales_amt}
+              {!lb.sales_cnt ? "로그인" : amountParser(lb.sales_cnt)}
+            </td>
+            <td className={styles.cell}>
+              {!lb.sales_amt ? "로그인" : amountParser(lb.sales_amt)}
             </td>
             <td className={`${styles.cell} ${styles.prdCnt}`}>
               {lb.product_cnt}

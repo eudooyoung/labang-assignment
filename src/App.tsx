@@ -6,6 +6,7 @@ import { useLogout } from "./hooks/useLogout.ts";
 import { usePing } from "./hooks/usePing.ts";
 import type { HomeShopping, ListType, LiveBroadCast } from "./types/types.ts";
 import { HSTable } from "./components/table/HSTable.tsx";
+import styles from "./App.module.css";
 
 function App() {
   const { user, userLoading, userError, getUser } = usePing();
@@ -42,7 +43,7 @@ function App() {
   };
 
   return (
-    <main>
+    <main className={styles.main}>
       {userError && <p>{userError.message}</p>}
       {!user && (
         <button disabled={loginLoading} onClick={loginHandler}>
